@@ -2,7 +2,13 @@ import { createClient, commandOptions } from "redis";
 import { getRepoFromS3 } from "./aws/getRepoFromS3";
 import { buildProject } from "./utils/buildProject";
 import { uploadToS3 } from "./aws/uploadToS3";
-const subscriber = createClient();
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const subscriber = createClient({
+  url: process.env.REDIS_URL,
+});
 subscriber.connect();
 
 const main = async () => {
