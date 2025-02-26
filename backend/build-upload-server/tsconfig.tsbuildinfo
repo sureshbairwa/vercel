@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/aws/getrepofroms3.ts","./src/aws/uploadtos3.ts","./src/utils/buildproject.ts"],"version":"5.6.3"}

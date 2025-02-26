@@ -1,0 +1,49 @@
+# Ignore node_modules directory (Node.js)
+node_modules/
+
+# Ignore build directories (e.g., Python, Java)
+dist/
+build/
+out/
+
+# Ignore temporary files and system files
+*.tmp
+*.log
+*.swp
+*.swo
+*.DS_Store
+*.vscode/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore IDE/project files
+.idea/
+*.iml
+*.sublime-project
+*.sublime-workspace
+
+# Ignore environment files (e.g., Python virtualenv)
+venv/
+.env
+
+# Ignore compiled executables
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore macOS files
+.DS_Store
+
+# Ignore package lock files
+package-lock.json
+yarn.lock
+
+# Ignore config files (e.g., environment specific)
+.env.local
+.env.production
+.env.test
