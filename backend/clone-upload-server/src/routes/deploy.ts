@@ -25,9 +25,17 @@ const deleteFolder = async (folderPath: string) => {
   }
 };
 
-router.get('/hi', async (req, res) => {
-  const Id="0uaw17f4u0"
-  const files = await readAllFiles(path.join(__dirname,`../gitrepo/${Id}`));
+router.post('/hi', async (req, res) => {
+
+   const {repoURL} = req.body;
+    console.log(repoURL);
+    const Id=generateDeployId();
+    const git = simpleGit();
+    // const Id="0uaw17f4u0"
+    await git.clone(repoURL,path.join(__dirname,`../gitrepo/${Id}`));
+    console.log("Cloned");
+    
+    const files = await readAllFiles(path.join(__dirname,`../gitrepo/${Id}`));
 
   for (const file of files) {
     const relativePath = path.relative(path.join(__dirname, `../gitrepo`), file);
@@ -41,7 +49,9 @@ router.get('/hi', async (req, res) => {
     // await uploadFile(file, targetPath);
 }
 
-  res.send('deploy hi ');
+  await deleteFolder(path.join(__dirname,`../gitrepo/${Id}`));
+
+  res.send({deployId:Id});
 });
 
 router.post('/',async (req,res)=>{
