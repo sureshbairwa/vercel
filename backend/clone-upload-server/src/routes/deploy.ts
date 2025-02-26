@@ -5,16 +5,25 @@ import path from 'path';
 import { readAllFiles } from '../utils/readAllFiles';
 import { uploadFile } from '../utils/uploadFile';
 import { createClient } from 'redis';
+import dotenv from 'dotenv';
+import fs from 'fs';
+
+dotenv.config();
 
 const router = express.Router();
-const publisher = createClient();
+const publisher = createClient(
+  {url:process.env.REDIS_URL}
+);
 publisher.connect();
 
-const uploadAllFiles = async (files: string[], Id: string) => {
-
-
-
-}
+const deleteFolder = async (folderPath: string) => {
+  try {
+    await fs.promises.rmdir(folderPath, { recursive: true });
+    console.log(`Folder "${folderPath}" deleted successfully.`);
+  } catch (error) {
+    console.error(`Error deleting folder "${folderPath}":`, error);
+  }
+};
 
 router.get('/hi', async (req, res) => {
   const Id="0uaw17f4u0"
@@ -29,7 +38,7 @@ router.get('/hi', async (req, res) => {
 
     console.log("file",targetPath);
 
-    await uploadFile(file, targetPath);
+    // await uploadFile(file, targetPath);
 }
 
   res.send('deploy hi ');
@@ -62,6 +71,10 @@ router.post('/',async (req,res)=>{
     }
 
     publisher.lPush("build-repo",Id);
+
+    await deleteFolder(path.join(__dirname,`../gitrepo/${Id}`));
+
+
 
     // console.log(files);
     res.status(200).json({deployId:Id});
