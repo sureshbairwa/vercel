@@ -33,11 +33,11 @@ app.get('/api/hi', (req, res) => {
 
 if (process.env.NODE_ENV === "production") {
     // Serve static files from the dist folder in the root directory
-    app.use(express.static(path.join(__dirname, "dist")));
+    app.use(express.static(path.join(__dirname, "client")));
 
     // Handle all other routes and serve index.html for client-side routing
     app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+        res.sendFile(path.resolve(__dirname, "client", "index.html"));
     });
 }
 
