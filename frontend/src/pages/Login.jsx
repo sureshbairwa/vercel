@@ -24,9 +24,11 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/api/auth/login', formData);
+
+      console.log("login response->", response.data)
       if (response.status === 200) {
        
-         await authCheck();
+        //  await authCheck();
         
       
         toast.success("Login Successful", { duration: 4000 });

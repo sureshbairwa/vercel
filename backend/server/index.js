@@ -5,6 +5,13 @@ import projectRoutes from './routes/projects.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 import dotenv from 'dotenv'
+import path from 'path'
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 
 dotenv.config()
 
@@ -20,10 +27,22 @@ app.use(cookieParser())
 
 app.use('/api/auth', authRoutes)
 app.use('/api/projects', projectRoutes)
-
-app.get('/', (req, res) => {
+app.get('/api/hi', (req, res) => {
     res.send('Hello server')
 })
+
+if (process.env.NODE_ENV === "production") {
+    // Serve static files from the dist folder in the root directory
+    app.use(express.static(path.join(__dirname, "dist")));
+
+    // Handle all other routes and serve index.html for client-side routing
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "dist", "index.html"));
+    });
+}
+
+
+
 
 app.listen(5000, () => {
     connectDB()
