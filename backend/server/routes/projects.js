@@ -9,6 +9,7 @@ const router = express.Router();
 router.use(protectRoute);
 
 
+
 router.get("/", (req, res) => {
     res.send("Project Route");
 }); 

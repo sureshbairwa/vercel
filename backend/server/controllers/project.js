@@ -9,7 +9,7 @@ export const addProject = async(req, res) => {
    
     const {projectName,repoURL }= req.body
 
-    let deployRepo= await axios.post("http://localhost:3000/api/deploy/",{repoURL});
+    let deployRepo= await axios.post(process.env.CLONE_UPLOAD_SERVER_URL+"/api/deploy",{repoURL});
     
     // console.log(deployRepo.data);
 

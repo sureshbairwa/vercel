@@ -4,12 +4,15 @@ import connectDB from './config/connectDB.js'
 import projectRoutes from './routes/projects.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const app = express()
 
 app.use(express.json())
 app.use(cors({
-    origin: 'http://localhost:5173',  
+    origin: process.env.FRONTEND_URL,  
     credentials: true,  
 }));
 
