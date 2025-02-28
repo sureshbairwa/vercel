@@ -16,7 +16,7 @@ export const addProject = async(req, res) => {
     let deployId = deployRepo.data.deployId || "abcd3d44r4";
 
     // let deployId= "abcd3d44r4";
-    let hostedLink= `http://localhost:3001/${deployId}/index.html`;
+    let hostedLink= process.env.USER_REQUEST_HANDLER_HOST_URL+`/${deployId}/index.html`;
     let githubURL= repoURL;
 
 

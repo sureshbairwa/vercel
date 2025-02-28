@@ -47,7 +47,7 @@ const Navbar = () => {
        
         <div className="flex items-center space-x-4 text-gray-300 font-bold">
           
-          <Link to="https://github.com/sureshbairwa/test-web" className=" hover:text-indigo-600 hover:underline">
+          <Link to="https://github.com/sureshbairwa/vercel" className=" hover:text-indigo-600 hover:underline">
             <img src={githubLogo} width={35} />
           </Link>
 

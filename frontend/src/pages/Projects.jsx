@@ -28,7 +28,7 @@ const Projects = () => {
       if (sortOption === "name") {
         return a.projectName.localeCompare(b.projectName);
       } else if (sortOption === "date") {
-        return new Date(b.updatedDate) - new Date(a.updatedDate);
+        return new Date(b.updatedDate.substring(0, 10)) - new Date(a.updatedDate.substring(0, 10));
       } else {
         return 0;
       }
