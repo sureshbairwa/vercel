@@ -1,0 +1,10 @@
+version: '3'
+services:
+  react-app:
+    image: node:18-alpine                
+    container_name: react-app-builder     
+    working_dir: /app                    
+    volumes:
+      - ./dist/gitrepo:/app           
+    command: |
+      sh -c "npm install && npm run build"

@@ -5,8 +5,18 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
+
+export const deleteFolder = async (folderPath: string) => {
+    try {
+      await fs.promises.rmdir(folderPath, { recursive: true });
+      console.log(`Folder "${folderPath}" deleted successfully.`);
+    } catch (error) {
+      console.error(`Error deleting folder "${folderPath}":`, error);
+    }
+  };
+
 export const uploadToS3 = async(repoId:string)=>{
-    const files = await readAllFiles(path.join(__dirname, '../gitrepo/', repoId,'dist'));
+    const files = await readAllFiles(path.join(__dirname, '../gitrepo/','dist'));
     console.log(files);
     for(const file of files){
         const relativePath = path.relative(path.join(__dirname, `../gitrepo`), file);
@@ -19,6 +29,10 @@ export const uploadToS3 = async(repoId:string)=>{
 
         await uploadFile(file, targetPath);
         }
+
+        await deleteFolder(path.join(__dirname, '../gitrepo'));
+
+     
 
 }
 

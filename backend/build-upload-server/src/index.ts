@@ -3,6 +3,8 @@ import { getRepoFromS3 } from "./aws/getRepoFromS3";
 import { buildProject } from "./utils/buildProject";
 import { uploadToS3 } from "./aws/uploadToS3";
 import dotenv from "dotenv";
+// import { deleteFolder } from "./aws/uploadToS3";
+// import path from "path";
 
 dotenv.config();
 
@@ -28,7 +30,7 @@ const main = async () => {
         })
         .catch(console.error);
 
-      await buildProject(repoId)
+      await buildProject()
         .then(() => {
           console.log("Project build successful.");
         })
@@ -57,7 +59,7 @@ const main = async () => {
 // }).catch(console.error);
 
 // const repoId = '12345';  // Example repoId
-// buildProject(repoId)
+// buildProject()
 //     .then(() => {
 //         console.log('Project build successful.');
 //     })
@@ -69,5 +71,11 @@ const main = async () => {
 //     console.log('All files uploaded successfully.');
 // }
 // ).catch(console.error);
+// runDockerCompose();
+
+// deleteFolder(path.join(__dirname, '/gitrepo'));
+
+
+
 
 main();

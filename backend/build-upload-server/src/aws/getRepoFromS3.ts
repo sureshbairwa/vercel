@@ -26,11 +26,10 @@ const streamPipeline = promisify(pipeline);
 
 
 export const getRepoFromS3 = async (repoId: string): Promise<void> => {
-    const bucketName = process.env.AWS_BUCKET;  // S3 bucket name
-    const s3Folder = `gitrepo/${repoId}`;  // Path in the S3 bucket (prefix)
-    const localFolder = path.join(__dirname,'../gitrepo/', repoId);  // Local folder path
+    const bucketName = process.env.AWS_BUCKET; 
+    const s3Folder = `gitrepo/${repoId}`; 
+    const localFolder = path.join(__dirname,'../gitrepo');  
 
-    // Ensure local directory exists
     if (!fs.existsSync(localFolder)) {
         fs.mkdirSync(localFolder, { recursive: true });
     }
@@ -52,10 +51,10 @@ export const getRepoFromS3 = async (repoId: string): Promise<void> => {
         }
 
         for (const file of files) {
-            const s3Key = file.Key as string;  // The full path of the file in S3
+            const s3Key = file.Key as string; 
 
             const relativeFilePath = s3Key.replace(s3Folder, '').replace(/^\//, '');
-            const localFilePath = path.join(localFolder, relativeFilePath);  // Local file path
+            const localFilePath = path.join(localFolder, relativeFilePath);  
 
             const localDir = path.dirname(localFilePath);
             if (!fs.existsSync(localDir)) {
