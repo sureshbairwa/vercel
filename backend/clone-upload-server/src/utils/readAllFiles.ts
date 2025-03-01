@@ -8,9 +8,9 @@ export const readAllFiles = async (dir: string): Promise<string[]> => {
         const filePath = path.join(dir, file);
 
         console.log("file-> ",file);
-        // if (file === '.git') {
-        //     continue;
-        // }
+        if (file === '.git' || file === 'node_modules') {
+            continue;
+        }
         const stat = await fs.promises
             .lstat(filePath)
             .catch((err) => console.log(err));
