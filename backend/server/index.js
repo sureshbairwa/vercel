@@ -32,7 +32,7 @@ app.get('/api/hi', (req, res) => {
 })
 
 if (process.env.NODE_ENV === "production") {
-    // Serve static files from the dist folder in the root directory
+    // Serve static files from the client folder in the root directory
     app.use(express.static(path.join(__dirname, "client")));
 
     // Handle all other routes and serve index.html for client-side routing
