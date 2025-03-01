@@ -23,7 +23,7 @@ export const uploadToS3 = async(repoId:string)=>{
 
         const normalizedRelativePath = relativePath.replace(/\\/g, '/');
 
-        const targetPath = `dist/${normalizedRelativePath}`;
+        const targetPath = `dist/${repoId}/${normalizedRelativePath}`;
 
         console.log("targetPath",targetPath);
 
