@@ -51,8 +51,8 @@ const Login = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
       <div className="w-full max-w-md bg-black p-6 rounded-lg shadow-lg border border-amber-100">
-      <div className='relative flex justify-end'>
-        <p className=' cursor-pointer ' onClick={handleCancel}>
+      <div className='relative flex justify-end '>
+        <p className=' cursor-pointer  ' onClick={handleCancel}>
           ❌
         </p>
       </div>

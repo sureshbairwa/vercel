@@ -43,14 +43,11 @@ const DeployForm = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r bg-gray-900 ">
-      <div className='relative flex justify-end'>
-        <p className=' cursor-pointer ' onClick={handleCancel}>
-          ❌
-        </p>
-      </div>
+      
       <h1 className="text-4xl text-white font-bold mb-6">Deploy Your GitHub Repository</h1>
+      
       <form onSubmit={handleSubmit} className="w-3/4 max-w-md bg-gray-800  border-2  border-gray-500 rounded-lg shadow-lg p-6 text-white">
-
+      
       <div className="mb-4">
           <label htmlFor="projectName" className="block  font-bold mb-2">Project Name</label>
           <input

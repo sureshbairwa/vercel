@@ -28,7 +28,7 @@ const Projects = () => {
       if (sortOption === "name") {
         return a.projectName.localeCompare(b.projectName);
       } else if (sortOption === "date") {
-        return new Date(b.updatedDate.substring(0, 10)) - new Date(a.updatedDate.substring(0, 10));
+        return new Date(b.updatedAt) - new Date(a.updatedAt);
       } else {
         return 0;
       }
@@ -89,12 +89,13 @@ const Projects = () => {
                   </h3>
                   <a
                     href={project.hostedLink}
-                    className="text-gray-400 hover:underline"
+                    className="text-gray-400 hover:underline break-all overflow-wrap break-word"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     {project.hostedLink}
                   </a>
+
                 </div>
               </div>
 
