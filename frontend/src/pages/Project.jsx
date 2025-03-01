@@ -2,14 +2,14 @@ import React from 'react';
 
 const Project = () => {
   const project = {
-    projectName: "myvercel",
-    deployId: "abcd3d44r4",
-    description: "This is a test deployment for a Vercel-like platform.",
-    logo: "../assets/react.svg", 
+    projectName: "",
+    deployId: "",
+    description: "",
+    logo: "", 
     hostedLink: "",
-    githubURL: "https://github.com/sureshbairwa/test-web",
-    createdAt: "2025-02-24T16:46:08.193+00:00",
-    updatedAt: "2025-02-24T16:46:08.193+00:00",
+    githubURL: "",
+    createdAt: "",
+    updatedAt: "",
   };
 
   return (
